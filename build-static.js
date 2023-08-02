@@ -4,7 +4,7 @@ const fse = require("fs-extra"); // v 5.0.0
 const path = require("path");
 
 // based on https://fettblog.eu/scraping-with-puppeteer/
-async function start(urlToFetch) {
+async function start(urlsToFetch) {
   /* 1 */
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
@@ -20,11 +20,15 @@ async function start(urlToFetch) {
   });
 
   /* 3 */
-  await page
-    .goto(urlToFetch, {
-      waitUntil: "networkidle0",
-    })
-    .then(() => browser.close());
+  await Promise.allSettled(
+    urlsToFetch.map((url) =>
+      page.goto(url, {
+        waitUntil: "networkidle0",
+      })
+    )
+  );
+  browser.close();
 }
 
-start("http://localhost:3000");
+const args = process.argv.slice(2);
+start(args);
