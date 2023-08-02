@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const puppeteer = require("puppeteer"); // v 1.1.0
 const { URL } = require("url");
 const fse = require("fs-extra"); // v 5.0.0
