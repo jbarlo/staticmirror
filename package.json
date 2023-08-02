@@ -5,11 +5,16 @@
     "build-static": "rm -R static; node build-static.js",
     "serve-static": "serve static"
   },
-  "dependencies": {},
   "devDependencies": {
     "puppeteer": "^20.9.0"
   },
   "engines": {
     "node": ">=14.0.0"
-  }
+  },
+  "name": "staticmirror",
+  "description": "A little node helper script to mirror websites.",
+  "version": "0.0.1",
+  "main": "build-static.js",
+  "author": "",
+  "license": "ISC"
 }
