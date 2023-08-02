@@ -1,5 +1,4 @@
 {
-  "private": true,
   "sideEffects": false,
   "scripts": {
     "build-static": "rm -R static; node build-static.js",
